@@ -1,7 +1,12 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+var pressione = angular.module('pressione',[] );
 
-
+pressione.controller('pressioneController', function($scope,$http){ 
+        var vm = this;
+            vm.init=function (){
+                $http.get("../ng-pa/elenco.php")
+                        .then(function(response){
+                            $scope.table =response.data;
+                    });
+                };
+                vm.init();
+        });
