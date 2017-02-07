@@ -1,45 +1,58 @@
 ﻿<!DOCTYPE HTML>
 <html lang="it" ng-app="pressione">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Angularjs App</title>
-                
-		<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
-                <link rel="stylesheet" type="text/css" media="all" href="lib/bootstrap/css/bootstrap-theme.min.css" />	
-                
-		
-	</head>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Angularjs App</title>
+
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="lib/bootstrap/css/bootstrap-theme.min.css" />	
+
+
+    </head>
+
+    <body >
+        <!--div ng-controller="pressioneController as pressione">Tabella misurazioni
+        <div>{{table}}</div>
+        </div-->
+        <form action="?p=elenco" method="POST">
+            <caption>Nuova misurazione:</caption>
+            <input type="date" name="datamisurazione" value="<?=date('dd/mm/yyyy');?>" placeholder="data" required />
+            <input type="number" name="sistolica" placeholder="sistolica" required />
+            <input type="number" name="diastolica" placeholder="diastolica" required />	
+            <input type="number" name="peso" placeholder="peso" required />
+            <button type="submit">Salva</button>
+        </form>
+        <table class="table table-striped responsive" ng-controller="pressioneController" border="1">
+            <thead>
+            <th>ID</th>
+            <th>Sistolica</th>
+            <th>Diastolica</th>
+            <th>Peso</th>
+            <th>Data</th>
+            <th>Azione</th>
+        </thead>
+        <tr ng-repeat="(k,x) in table">
+            <td>{{x.id}}</td>
+            <td>{{x.sistolica}}</td>
+            <td>{{x.diastolica}}</td>
+            <td>{{x.peso}}</td>
+            <td>{{x.datamisurazione}}</td>    
+            <td><a class="btn btn-sm btn-danger" ng-click="pressione.delete(k)">Cancella</a></td>   
+            
         
-	<body >
-            <!--div ng-controller="pressioneController as pressione">Tabella misurazioni
-            <div>{{table}}</div>
-            </div-->
+
             
-            <table class="table table-striped responsive" ng-controller="pressioneController" border="1">
-                <thead>
-                    <th>ID</th>
-                    <th>Sistolica</th>
-                    <th>Diastolica</th>
-                    <th>Peso</th>
-                    <th>Data</th>
-                </thead>
-                <tr ng-repeat="x in table">
-                    <td>{{x.id}}</td>
-                    <td>{{x.sistolica}}</td>
-                    <td>{{x.diastolica}}</td>
-                    <td>{{x.peso}}</td>
-                    <td>{{x.datamisurazione}}</td>                   
-                </tr>
-            </table>
-            
-            
-		<script src="lib/jquery/jquery-3.1.1.min.js"></script>
-		<script src="lib/angular/angular.min.js"></script>
-		<script src="lib/angular/angular-locale_it-it.js"></script>
-		<script src="lib/angular/angular-route.min.js"></script> 
-                <script src="js/app.js"></script>
-		<script src="js/pressioneController.js"></script>
-                
-                
-	</body>
+        </tr>
+    </table>
+
+
+    <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-locale_it-it.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script> 
+    <script src="js/app.js"></script>
+    <script src="js/pressioneController.js"></script>
+
+
+</body>
 </html>
