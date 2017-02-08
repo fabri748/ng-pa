@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="it" ng-app="pressione">
     <head>
         <meta charset="UTF-8" />
@@ -11,32 +11,26 @@
     </head>
 
     <body >
-        <div ng-controller="pressioneController as pressione">
+        <div ng-controller="temperaturaController as temperatura">
             <form>
-                <input type="date" ng-model="pressione.newMisurazione.datamisurazione">
-                <input type="number" ng-model="pressione.newMisurazione.sistolica">
-                <input type="number" ng-model="pressione.newMisurazione.diastolica">
-                <input type="number" ng-model="pressione.newMisurazione.peso">
+                <input type="date" ng-model="temperatura.newMisurazione.datamisurazione">
+                <input type="number" ng-model="temperatura.newMisurazione.valore">
+                
 
-                <button ng-click="pressione.addMisurazione()">salva</button>
+                <button ng-click="temperatura.addTemp()">salva</button>
             </form>
 
             <table class="table table-striped responsive"  border="1">
                 <thead>
                 <th>ID</th>
-                <th>Sistolica</th>
-                <th>Diastolica</th>
-                <th>Peso</th>
                 <th>Data</th>
-                <th>Azione</th>
+                <th>Valore</th>              
                 </thead>
                 <tr ng-repeat="(k,x) in table">
                     <td>{{x.id}}</td>
-                    <td>{{x.sistolica}}</td>
-                    <td>{{x.diastolica}}</td>
-                    <td>{{x.peso}}</td>
+                    <td>{{x.valore}}</td>
                     <td>{{x.datamisurazione}}</td>    
-                    <td><a class="btn btn-sm btn-danger" ng-click="pressione.delete(k)">Cancella</a></td>   
+                    <td><a class="btn btn-sm btn-danger" ng-click="temperatura.cancTemp(k)">Cancella</a></td>   
                 </tr>
             </table>
         </div>
