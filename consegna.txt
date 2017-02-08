@@ -1,0 +1,6 @@
+ripendere il file php aggiungere un controllo prima del salvataggio sulla pressione dia/sis, 
+in caso di errore popolare una stringa col messsaggio di errore
+portare in salvataggio solo se non ci sono errori, restituire in echo jsno encode un 
+oggetto aggregato con message e list, la vecchia tabella in list e in message il messaggio di errore
+(se tutto è andato a buon fine sarà vuoto)
+
