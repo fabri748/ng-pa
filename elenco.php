@@ -11,11 +11,17 @@
 		if ($record && !empty($_REQUEST['act']) && $_REQUEST['act']=='del') R::trash($record);
 		$new = json_decode(file_get_contents('php://input'), true);
                 
-		if (!empty($new)){       
-			foreach ($new as $k=>$v){
-				$record[$k]=$v;
-			}
-                        R::store($record);
+		if (!empty($new)){  
+                    $diastolica=$new['diastolica'];
+                    $sistolica=$new['sistolica'];
+                    $error = "";
+                    if($diastolica>$sistolica){
+                        $error="errore";
+                    }
+                    foreach ($new as $k=>$v){
+                            $record[$k]=$v;
+                    }
+                    if (empty($error))R::store($record);
                }
 			
 	} catch (RedBeanPHP\RedException\SQL $e) {
