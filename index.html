@@ -11,48 +11,41 @@
     </head>
 
     <body >
-        <!--div ng-controller="pressioneController as pressione">Tabella misurazioni
-        <div>{{table}}</div>
-        </div-->
-        <form action="?p=elenco" method="POST">
-            <caption>Nuova misurazione:</caption>
-            <input type="date" name="datamisurazione" value="<?=date('dd/mm/yyyy');?>" placeholder="data" required />
-            <input type="number" name="sistolica" placeholder="sistolica" required />
-            <input type="number" name="diastolica" placeholder="diastolica" required />	
-            <input type="number" name="peso" placeholder="peso" required />
-            <button type="submit">Salva</button>
-        </form>
-        <table class="table table-striped responsive" ng-controller="pressioneController" border="1">
-            <thead>
-            <th>ID</th>
-            <th>Sistolica</th>
-            <th>Diastolica</th>
-            <th>Peso</th>
-            <th>Data</th>
-            <th>Azione</th>
-        </thead>
-        <tr ng-repeat="(k,x) in table">
-            <td>{{x.id}}</td>
-            <td>{{x.sistolica}}</td>
-            <td>{{x.diastolica}}</td>
-            <td>{{x.peso}}</td>
-            <td>{{x.datamisurazione}}</td>    
-            <td><a class="btn btn-sm btn-danger" ng-click="pressione.delete(k)">Cancella</a></td>   
-            
-        
+        <div ng-controller="pressioneController as pressione">
 
-            
-        </tr>
-    </table>
+            <form action="?p=elenco" method="POST">
+                <caption>Nuova misurazione:</caption>
+                <input type="date" name="datamisurazione" value="<?=date('dd/mm/yyyy');?>" placeholder="data" required />
+                <input type="number" name="sistolica" placeholder="sistolica" required />
+                <input type="number" name="diastolica" placeholder="diastolica" required />	
+                <input type="number" name="peso" placeholder="peso" required />
+                <button type="submit">Salva</button>
+            </form>
+            <table class="table table-striped responsive"  border="1">
+                <thead>
+                <th>ID</th>
+                <th>Sistolica</th>
+                <th>Diastolica</th>
+                <th>Peso</th>
+                <th>Data</th>
+                <th>Azione</th>
+                </thead>
+                <tr ng-repeat="(k,x) in table">
+                    <td>{{x.id}}</td>
+                    <td>{{x.sistolica}}</td>
+                    <td>{{x.diastolica}}</td>
+                    <td>{{x.peso}}</td>
+                    <td>{{x.datamisurazione}}</td>    
+                    <td><a class="btn btn-sm btn-danger" ng-click="pressione.delete(k)">Cancella</a></td>   
+                </tr>
+            </table>
+        </div>
 
-
-    <script src="lib/jquery/jquery-3.1.1.min.js"></script>
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular/angular-locale_it-it.js"></script>
-    <script src="lib/angular/angular-route.min.js"></script> 
-    <script src="js/app.js"></script>
-    <script src="js/pressioneController.js"></script>
-
-
-</body>
+        <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-locale_it-it.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script> 
+        <script src="js/app.js"></script>
+        <script src="js/pressioneController.js"></script>
+    </body>
 </html>
