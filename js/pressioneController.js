@@ -1,10 +1,11 @@
-pressione.controller('pressioneController', ["$scope", "$http", function ($scope, $http) {
+pressione.controller('pressioneController',  function ($scope, $http) {
         var vm = this;
         vm.init = function () {
-            $http.get("../ng-pa/elenco.php")
-                    .then(function (response) {
+            vm.resetMisurazione();
+            $http.get("../ng-pa/elenco.php").then(function (response) {
                         $scope.table = response.data;
                     });
+                    
         };
         vm.delete = function (id) {
             $http.get("../ng-pa/elenco.php?act=del&id=" + id)
@@ -13,6 +14,15 @@ pressione.controller('pressioneController', ["$scope", "$http", function ($scope
 
                     });
         };
+        vm.addMisurazione = function () {
+            $http.post("../ng-pa/elenco.php", vm.newMisurazione).then(function (response) {
+                        $scope.table = response.data;
+                    });
+                    vm.resetMisurazione();
+        };
+        vm.resetMisurazione = function () {
+            vm.newMisurazione = {peso: null, datamisurazione: null, sistolica: null, diastolica: null};
+        };
         vm.init();
 
-    }]);
+    });

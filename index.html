@@ -12,15 +12,15 @@
 
     <body >
         <div ng-controller="pressioneController as pressione">
+            <form>
+                <input type="date" ng-model="pressione.newMisurazione.datamisurazione">
+                <input type="number" ng-model="pressione.newMisurazione.sistolica">
+                <input type="number" ng-model="pressione.newMisurazione.diastolica">
+                <input type="number" ng-model="pressione.newMisurazione.peso">
 
-            <form action="?p=elenco" method="POST">
-                <caption>Nuova misurazione:</caption>
-                <input type="date" name="datamisurazione" value="<?=date('dd/mm/yyyy');?>" placeholder="data" required />
-                <input type="number" name="sistolica" placeholder="sistolica" required />
-                <input type="number" name="diastolica" placeholder="diastolica" required />	
-                <input type="number" name="peso" placeholder="peso" required />
-                <button type="submit">Salva</button>
+                <button ng-click="pressione.addMisurazione()">salva</button>
             </form>
+
             <table class="table table-striped responsive"  border="1">
                 <thead>
                 <th>ID</th>
